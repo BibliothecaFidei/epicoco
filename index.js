@@ -105,7 +105,7 @@ let format_vid = (v) => {
 }
 
 let format_book = (title) => {
-    if (title === "Mt" || title === "Mc" || title === "Lc" || title == "Gv") {
+    if (title === "Mt" || title === "Mc" || title === "Lc" || title === "Gv") {
         return `<b>${title}</b>`;
     }
     return title;
