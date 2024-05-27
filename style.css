@@ -1,0 +1,57 @@
+.collapsiblebtn {
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    background: transparent;
+    text-decoration: underline;
+}
+
+/* .active, .collapsible:hover {
+    background-color: #555; 
+} */
+
+.collapsiblectn {
+    display: none;
+    overflow: hidden;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: monospace;
+}
+p {
+    text-align: justify;
+}
+a {
+    color: #0a55aa;
+}
+.doc {
+    width: 50%;
+    margin: 5em auto;
+}
+h1,h2,h3,h4 {
+    padding: 1em;
+    text-align: center;
+}
+h1 {
+    font-size: 36px;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+
+p, a, ul, li, button {
+    font-size: 18px;
+}
+
+.inlinelst {
+    display: inline;
+}
