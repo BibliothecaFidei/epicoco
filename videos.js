@@ -1,5 +1,21 @@
 let video = [
     {
+        "titolo": 'Mani giunte dinanzi a Dio e mani tese verso i fratelli',
+        "id": "pveHuOrUt5c",
+        "scrittura": [
+            "Lc 10, 38-42",
+            "Gv 12, 1-2",
+            "Mc 9, 21-23",
+            "Mc 5, 25-34",
+            "Gen 22, 1-12"
+        ]
+    },
+    {
+        "titolo": 'Maria icona del Dio appassionato',
+        "id": "bDZO6l66sfs",
+        "scrittura": ["TODO"]
+    },
+    {
         "titolo": 'Pregare come Gesù ci ha insegnato',
         "id": "u-ZfTU1X1tg",
         "scrittura": [
