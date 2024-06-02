@@ -117,47 +117,45 @@ let initialize_videos = () => {
 }
 
 let initialize_bible = (books, div) => {
-    let cited_books = [];
-    for (bb of books) {
-        let cited = false;
-        let chapters = Array(bb[1]+1);
-        for (let i = 0; i < chapters.length; i++) {
-            chapters[i] = [];
-        }
+    let cited_books = new Map(books.map((b) => [b[0], { n_chapters: b[1], cited_chapters: new Map() }]));
 
-        for (v of video) {
-            for (s of v.scrittura) {
-                let [bt, c, n] = parse_bible_citation(s);
-                if (bb[0] === bt && c > 0 && bb[1] >= c) {
-                    cited = true;
-                    if (!chapters[c].includes(v))
-                        chapters[c].push(v);
+    for (v of video) {
+        for (s of v.scrittura) {
+            let [bt, c, n] = parse_bible_citation(s);
+            if (cited_books.has(bt) && c > 0 && cited_books.get(bt).n_chapters >= c) {
+                if (!cited_books.get(bt).cited_chapters.has(c)) {
+                    cited_books.get(bt).cited_chapters.set(c, []);
                 }
+                cited_books.get(bt).cited_chapters.get(c).push(v);
             }
-        }
-
-        let filtered_chapters = [];
-        for (let i = 0; i < chapters.length; i++) {
-            if (chapters[i].length !== 0) {
-                filtered_chapters.push([i, chapters[i]])
-            }
-        }
-
-        filtered_chapters.sort((a, b) => {
-            if (a[0] === b[0]) {
-                return 0;
-            }
-            else {
-                return (a[0] < b[0]) ? -1 : 1;
-            }
-        });
-
-        if (cited) {
-            cited_books.push([bb[0], filtered_chapters]);
         }
     }
 
-    div.innerHTML = `<ul>${cited_books.map((b) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${format_book(b[0])}</button> <ul class="collapsiblectn">${b[1].map((c) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${c[0]}</button> <ul class="collapsiblectn">${c[1].map((v) => `<li>${format_vid(v)}</li>`).join("")}</ul></li>`).join("")}</ul></li>`).join("")}</ul>`;
+    let cited_array = Array.from(cited_books).filter((x) => x[1].cited_chapters.size > 0);
+    cited_array.sort((a, b) => {
+        let indexes = books.map((x) => x[0]);
+        let aidx = indexes.indexOf(a);
+        let bidx = indexes.indexOf(b);
+        if (aidx === bidx) {
+            return 0;
+        } else {
+            return (aidx < bidx) ? -1 : 1;
+        }
+    });
+
+    let cited_chapters_array = cited_array.map((x) => [x[0], Array.from(x[1].cited_chapters)]);
+
+    for (cc of cited_chapters_array) {
+        cc[1].sort((a, b) => {
+            if (a[0] === b[0]) {
+                return 0;
+            } else {
+                return (a[0] < b[0]) ? -1 : 1;
+            }
+        });
+    }
+
+    div.innerHTML = `<ul>${cited_chapters_array.map((b) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${format_book(b[0])}</button> <ul class="collapsiblectn">${b[1].map((c) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${c[0]}</button> <ul class="collapsiblectn">${c[1].map((v) => `<li>${format_vid(v)}</li>`).join("")}</ul></li>`).join("")}</ul></li>`).join("")}</ul>`;
 }
 
 window.onload = () => {
