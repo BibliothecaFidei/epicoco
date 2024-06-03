@@ -81,8 +81,28 @@ let nt_bible_books = [
 ];
 
 let parse_bible_citation = (citation) => {
-    let [b, c, v] = citation.split(/[\s,]/);
+    let [b, c, v] = citation.split(/[\s\,]+/, 3);
     return [b, Number(c), v];
+}
+
+let nil = {};
+let take_while = (f, [x = nil, ...xs]) => (x === nil || !f(x)) 
+    ? [] : [x, ...takeWhile(f, xs)];
+
+let first_versicle = (vd, b, ch) => {
+    let v = 1000;
+    for (s of vd.scrittura) {
+        let [pb, pch, pv] = parse_bible_citation(s);
+        if (b === pb && ch == pch) {
+            let nv = Number(pv.replace(/(^\D*)(\d+)(.*$)/i,'$2'));
+            // console.log(s, parse_bible_citation(s), nv);
+            if (nv < v) {
+                v = nv;
+            }
+        }
+    }
+    console.log(vd, v);
+    return v;
 }
 
 let initialize_collapsibles = () => {
@@ -123,7 +143,7 @@ let format_book = (title) => {
 }
 
 let initialize_videos = () => {
-    let list_html = `<ul>${video.map((v) => `<li>${format_vid(v)}</li>`).join("")}</ul>`;
+    let list_html = `<ul>${video.map((v) => `<li style="margin: 10px 0px;">${format_vid(v)}</li>`).join("")}</ul>`;
     videos_div.innerHTML = list_html;
 }
 
@@ -167,15 +187,19 @@ let initialize_bible = (books, div) => {
         
         for (ccc of cc[1]) {
             ccc[1] = Array.from(ccc[1]);
+            // if (ccc[1].length > 1)
+            // console.log(cc[0], ccc[0]);
             ccc[1].sort((a, b) => {
-                let aidx = video.indexOf(a);
-                let bidx = video.indexOf(b);
+                let aidx = first_versicle(a, cc[0], ccc[0]);
+                let bidx = first_versicle(b, cc[0], ccc[0]);
                 if (aidx === bidx) {
                     return 0;
                 } else {
                     return (aidx < bidx) ? -1 : 1;
                 }
             });
+            // if (ccc[1].length > 1)
+            // console.log(ccc[1]);
         }
     }
 
