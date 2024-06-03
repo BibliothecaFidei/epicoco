@@ -102,8 +102,6 @@ let initialize_collapsibles = () => {
 
 let highlight_matching_citation = (str, b, ch) => {
     let [bs, chs, _] = parse_bible_citation(str);
-    let condition = bs === b && ch === chs;
-    console.log(str, b, ch, condition);
     return bs === b && ch === chs ? `<span style="background-color: yellow;">${str}</span>` : str;
 }
 
