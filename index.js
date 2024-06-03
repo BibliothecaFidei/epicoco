@@ -100,8 +100,21 @@ let initialize_collapsibles = () => {
     }
 }
 
-let format_vid = (v) => {
-    return `<a href="https://youtu.be/${v.id}">${v.titolo}</a>` + (v.scrittura.length > 0 ? ` (<i>${v.scrittura.map((x) => x.replace('TODO', '<span style="color: red;"><b>TODO</b></span>').replace(/\[(.*)\]/, (x) => `<small>${x}</small>`)).join('</i>; <i>')}</i>)` : "");
+let highlight_matching_citation = (str, b, ch) => {
+    let [bs, chs, _] = parse_bible_citation(str);
+    let condition = bs === b && ch === chs;
+    console.log(str, b, ch, condition);
+    return bs === b && ch === chs ? `<span style="background-color: yellow;">${str}</span>` : str;
+}
+
+let format_vid = (v, [b, ch] = ["", 0]) => {
+    return `<a href="https://youtu.be/${v.id}">${v.titolo}</a>` +
+        (v.scrittura.length > 0 ? ` (<i>${
+            v.scrittura.map((x) => highlight_matching_citation(
+                x.replace('TODO', '<span style="color: red;"><b>TODO</b></span>').replace(/\[(.*)\]/, (x) => `<small>${x}</small>`),
+                b, ch)
+            ).join('</i>; <i>')
+        }</i>)` : "");
 }
 
 let format_book = (title) => {
@@ -168,7 +181,7 @@ let initialize_bible = (books, div) => {
         }
     }
 
-    div.innerHTML = `<ul>${cited_chapters_array.map((b) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${format_book(b[0])}</button> <ul class="collapsiblectn">${b[1].map((c) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${c[0]}</button> <ul class="collapsiblectn">${c[1].map((v) => `<li>${format_vid(v)}</li>`).join("")}</ul></li>`).join("")}</ul></li>`).join("")}</ul>`;
+    div.innerHTML = `<ul>${cited_chapters_array.map((b) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${format_book(b[0])}</button> <ul class="collapsiblectn">${b[1].map((c) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${c[0]}</button> <ul class="collapsiblectn">${c[1].map((v) => `<li>${format_vid(v, [b[0], c[0]])}</li>`).join("")}</ul></li>`).join("")}</ul></li>`).join("")}</ul>`;
 }
 
 window.onload = () => {
