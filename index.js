@@ -124,9 +124,9 @@ let initialize_bible = (books, div) => {
             let [bt, c, n] = parse_bible_citation(s);
             if (cited_books.has(bt) && c > 0 && cited_books.get(bt).n_chapters >= c) {
                 if (!cited_books.get(bt).cited_chapters.has(c)) {
-                    cited_books.get(bt).cited_chapters.set(c, []);
+                    cited_books.get(bt).cited_chapters.set(c, new Set());
                 }
-                cited_books.get(bt).cited_chapters.get(c).push(v);
+                cited_books.get(bt).cited_chapters.get(c).add(v);
             }
         }
     }
@@ -153,6 +153,19 @@ let initialize_bible = (books, div) => {
                 return (a[0] < b[0]) ? -1 : 1;
             }
         });
+        
+        for (ccc of cc[1]) {
+            ccc[1] = Array.from(ccc[1]);
+            ccc[1].sort((a, b) => {
+                let aidx = video.indexOf(a);
+                let bidx = video.indexOf(b);
+                if (aidx === bidx) {
+                    return 0;
+                } else {
+                    return (aidx < bidx) ? -1 : 1;
+                }
+            });
+        }
     }
 
     div.innerHTML = `<ul>${cited_chapters_array.map((b) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${format_book(b[0])}</button> <ul class="collapsiblectn">${b[1].map((c) => `<li class="inlinelst"><button type="button" class="collapsiblebtn">${c[0]}</button> <ul class="collapsiblectn">${c[1].map((v) => `<li>${format_vid(v)}</li>`).join("")}</ul></li>`).join("")}</ul></li>`).join("")}</ul>`;
@@ -162,6 +175,8 @@ window.onload = () => {
     videos_div = document.getElementById("videos_list");
     otbooks_div = document.getElementById("otbooks");
     ntbooks_div = document.getElementById("ntbooks");
+
+    // console.log(video.length);
     
     initialize_bible(ot_bible_books, otbooks_div);
     initialize_bible(nt_bible_books, ntbooks_div);
