@@ -94,14 +94,17 @@ let first_versicle = (vd, b, ch) => {
     for (s of vd.scrittura) {
         let [pb, pch, pv] = parse_bible_citation(s);
         if (b === pb && ch == pch) {
-            let nv = Number(pv.replace(/(^\D*)(\d+)(.*$)/i,'$2'));
-            // console.log(s, parse_bible_citation(s), nv);
+            let nv;
+            if (pv === undefined) {
+                nv = 0;
+            } else {
+                nv = Number(pv.replace(/(^\D*)(\d+)(.*$)/i,'$2'));
+            }
             if (nv < v) {
                 v = nv;
             }
         }
     }
-    console.log(vd, v);
     return v;
 }
 
@@ -186,20 +189,17 @@ let initialize_bible = (books, div) => {
         });
         
         for (ccc of cc[1]) {
-            ccc[1] = Array.from(ccc[1]);
-            // if (ccc[1].length > 1)
-            // console.log(cc[0], ccc[0]);
+            ccc[1] = Array.from(ccc[1]).map((x) => [x, first_versicle(x, cc[0], ccc[0])]);
             ccc[1].sort((a, b) => {
-                let aidx = first_versicle(a, cc[0], ccc[0]);
-                let bidx = first_versicle(b, cc[0], ccc[0]);
+                let aidx = a[1];
+                let bidx = b[1];
                 if (aidx === bidx) {
                     return 0;
                 } else {
                     return (aidx < bidx) ? -1 : 1;
                 }
             });
-            // if (ccc[1].length > 1)
-            // console.log(ccc[1]);
+            ccc[1] = ccc[1].map((x) => x[0]);
         }
     }
 
