@@ -147,7 +147,19 @@ let video = [
     {
         "titolo": 'Beatitudini - 8 passi sul sentiero della gioia',
         "id": "_jdYqKW2SMk",
-        "scrittura": ["TODO"]
+        "scrittura": [
+            "Mt 5, 3-12",
+            "Mt 27, 5",
+            "Lc 7, 36-47",
+            "Mt 5, 39-40",
+            "Gv 18, 10-11",
+            "Lc 22, 50-51",
+            "Lc 16, 19-26",
+            "Lc 10, 30-35",
+            "Mt 18, 21-30",
+            "Mt 25, 40",
+            "Lc 18, 21-22"
+        ]
     },
     {
         "titolo": 'Essere famiglia oggi',
@@ -272,7 +284,30 @@ let video = [
     {
         "titolo": 'Non distogliere lo sguardo dal povero',
         "id": "BuIt2DUMLIU",
-        "scrittura": ["TODO"]
+        "scrittura": [
+            "Tb 4, 7",
+            "Gv 12, 8",
+            "Mt 4, 2",
+            "Mt 18, 23-30",
+            "Tb 2, 3-10",
+            "Tb 2, 14",
+            "Lc 5, 31-32",
+            "Tb 1, 3-8",
+            "Lc 18, 10-12",
+            "Tb 2, 11-14",
+            "Lc 9, 49",
+            "Mt 7, 22-23",
+            "Mt 6, 3",
+            "Lc 10, 30-33",
+            "Mt 8, 5-10",
+            "Mt 15, 22-28",
+            "Mt 5, 47",
+            "Lc 14, 12-14",
+            "Mt 5, 44",
+            "Lc 15, 28-30",
+            "Lc 16, 20-21",
+            "1Gv 4, 20"
+        ]
     },
     {
         "titolo": 'Sant’Angela da Foligno (prima parte)',
@@ -3541,7 +3576,7 @@ let video = [
         "titolo": 'Audiocommento al Vangelo del giorno - Lc 1,39-56',
         "id": "ktk0JpKCdSY",
         "scrittura": [
-            "Lc 1,39-56"
+            "Lc 1, 39-56"
         ]
     },
     {
@@ -3555,84 +3590,84 @@ let video = [
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 17,22-27',
         "id": "Lb5A-dk-zVc",
         "scrittura": [
-            "Mt 17,22-27"
+            "Mt 17, 22-27"
         ]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Gv 6,41-51',
         "id": "lscRlkCJYUY",
         "scrittura": [
-            "Gv 6,41-51"
+            "Gv 6, 41-51"
         ]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 17,14-20',
         "id": "JV7rN8ci4jw",
         "scrittura": [
-            "Mt 17,14-20"
+            "Mt 17, 14-20"
         ]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Gv 12,24-26',
         "id": "zPXSMeEz0Q4",
         "scrittura": [
-            "Gv 12,24-26"
+            "Gv 12, 24-26"
         ]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 25,1-13',
         "id": "H8PAe16dSAs",
-        "scrittura": ["Mt 25,1-13"]
+        "scrittura": ["Mt 25, 1-13"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 15,21-28',
         "id": "lvAfshSqfBQ",
-        "scrittura": ["Mt 15,21-28"]
+        "scrittura": ["Mt 15, 21-28"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 14,22-36',
         "id": "UkZK5Zd4XKA",
-        "scrittura": ["Mt 14,22-36"]
+        "scrittura": ["Mt 14, 22-36"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mc 9,2-10',
         "id": "v3QVbFSBKTU",
-        "scrittura": ["Mc 9,2-10"]
+        "scrittura": ["Mc 9, 2-10"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Gv 6,24-35',
         "id": "oiOatfdkBMc",
-        "scrittura": ["Gv 6,24-35"]
+        "scrittura": ["Gv 6, 24-35"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 14,1-12',
         "id": "vg58DR25zrs",
-        "scrittura": ["Mt 14,1-12"]
+        "scrittura": ["Mt 14, 1-12"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,54-58',
         "id": "Gwyzd4EubAI",
-        "scrittura": ["Mt 13,54-58"]
+        "scrittura": ["Mt 13, 54-58"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,47-53',
         "id": "ypSwZJl4IHg",
-        "scrittura": ["Mt 13,47-53"]
+        "scrittura": ["Mt 13, 47-53"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,44-46',
         "id": "Td80N1T4VQc",
-        "scrittura": ["Mt 13,44-46"]
+        "scrittura": ["Mt 13, 44-46"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,36-43',
         "id": "JNDWBYqO7QE",
-        "scrittura": ["Mt 13,36-43"]
+        "scrittura": ["Mt 13, 36-43"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,31-35',
         "id": "y712yycS9sw",
-        "scrittura": ["Mt 13,31-35"]
+        "scrittura": ["Mt 13, 31-35"]
     },
     {
         "titolo": 'Catechesi mariana',
@@ -3642,17 +3677,17 @@ let video = [
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,24-30',
         "id": "iZomyHp72bQ",
-        "scrittura": ["Mt 13,24-30"]
+        "scrittura": ["Mt 13, 24-30"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,18-23',
         "id": "om5cyWMETEo",
-        "scrittura": ["Mt 13,18-23"]
+        "scrittura": ["Mt 13, 18-23"]
     },
     {
         "titolo": 'Audiocommento al Vangelo del giorno - Mt 13,10-17',
         "id": "cgdffHKcVQQ",
-        "scrittura": ["Mt 13,10-17"]
+        "scrittura": ["Mt 13, 10-17"]
     },
     {
         "titolo": 'Commento al Vangelo della XVII Domenica del T.O. (anno B)',
